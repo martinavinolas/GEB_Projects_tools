@@ -23,11 +23,16 @@ To solve this issue, we performed two types of adjustments. First, we applied a 
 
 ### The corrections we have made in the code
 
-idees:
-- lu del nom del grup
-- ip del ordinador
-- objecte a visualitzar 
+To adapt the program to our group setup and ensure correct communication and visualization, we made the following changes in the code:
 
+- **Device ID update (main.cpp):** We changed the device identifier from "G5_Endo" to "G1_Endo" to match our group.
+- **Receiver IP update (main.cpp):** We changed the receiver computer IP address from 192.168.1.55 to 192.168.1.15 so the IMU data was sent to the correct computer.
+- **Target device update (Receive_data_RPY_IMU_world.py):** We changed the target device from "G5_Endo" to "G1_Endo" so the script received data from our Endo-module.
+- **3D object update (Receive_data_RPY_IMU_world.py):** We changed the visualized object in RoboDK from "plane" to "surgical_needle" to visualize the needle and orient it. 
+
+<img width="997" height="581" alt="image" src="https://github.com/user-attachments/assets/ffa38885-1d2c-4686-a600-324bc4e1d4d8" />
+
+<img width="1088" height="461" alt="image" src="https://github.com/user-attachments/assets/d5c87a92-f73d-4bc4-8b77-b40515d998fc" />
 
 
 ### Our final conclusions 
