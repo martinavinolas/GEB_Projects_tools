@@ -5,12 +5,12 @@
 
 INDEX:
 
-1. Your first operating performances diagnostic, 
-2. The corrections you have made in the code
+1. Our first operating performances diagnostic, 
+2. The corrections we have made in the code
 3. Your final conclusions 
 
 
-### **1. Your first operating performances diagnostic**
+### **1. Our first operating performances diagnostic**
 We performed a set of operations in order to make the sytem work properly. 
 
 Once the hardware setup was completed, the first step was to configure the IP adress of the Endo-module to the one corresponding to our group, G1.
@@ -21,7 +21,7 @@ Once the connection was stable, we were able to visualize the selected 3D object
 To solve this issue, we performed two types of adjustments. First, we applied a **north orientation** correction to align the reference direction of the sensor with the expected world reference in roboDK. Second, a **3-axis orientation** correction was performed to ensure the Roll, Pitch, and Yaw rotations from the IMU matched the axes of the 3D object. By doing this, the movements performed on the Endo-module matched the ones observed on the plane in roboDK.
 
 
-### The corrections you have made in the code
+### The corrections we have made in the code
 
 idees:
 - lu del nom del grup
@@ -30,7 +30,7 @@ idees:
 
 
 
-### Your final conclusions 
+### Our final conclusions 
 
 The first conclusion we derived was to not trust every raw output we obtain from our simulation. As we mentioned, we had to adjust the axis in the 3D visualization and make them match those of our IMU sensor. If we hadn’t done this, we could have been visualizing a movement in the plane that didn’t correspond to the one we were applying to the endo-plate. We must always verify that our results are reliable, even if that means we have to make modifications in the simulations.
 
