@@ -35,5 +35,6 @@ idees:
 The first conclusion we derived was to not trust every raw output we obtain from our simulation. As we mentioned, we had to adjust the axis in the 3D visualization and make them match those of our IMU sensor. If we hadn’t done this, we could have been visualizing a movement in the plane that didn’t correspond to the one we were applying to the endo-plate. We must always verify that our results are reliable, even if that means we have to make modifications in the simulations.
 
 Furthermore, we tried to give a thought on how our Group Project could benefit from the use of an IMU sensor (we aim to develop a “Postural Correction Chair”). We concluded that an IMU could be useful to track the movement or inclination of the user’s spine and emit an alert when the measured values surpass a threshold.
+![Image 2026-03-19 at 12 45 30](https://github.com/user-attachments/assets/c953e124-dbc5-4198-bee5-bca850a71d1c)
 
 
