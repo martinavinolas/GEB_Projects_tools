@@ -10,14 +10,15 @@ INDEX:
 3. Your final conclusions 
 
 
-### Your first operating performances diagnostic:
+### **1. Your first operating performances diagnostic**
+We performed a set of operations in order to make the sytem work properly. 
 
-idees:
-- Lu dels eixos
-- Lu del router que no funcionava
+Once the hardware setup was completed, the first step was to configure the IP adress of the Endo-module to the one corresponding to our group, G1.
+The first operating performance diagnostic provided an output that indicated a failure in the connection between the IMU sensor and the Endo-Module. No data was being trasmitted, and the system was not responding as expected. 
+We reviewed the uploaded program and made sure there were no errors in the code or in the IP adress configuration. After realising all other groups were having the same connection failure, it became clear that the issue was not isolated to our setup. The source of error was  the router, _Robotics_UB_. After rebooting the router, the Python script was ran again, and the connection was stablished correctly.
 
-
-
+Once the connection was stable, we were able to visualize the selected 3D object, which was at first the plane, moving in real time in response to the movement of the Endo-module. However, we realised that the orientation of the virtual object did not match the actual physical orientation of the IMU sensor. 
+To solve this issue, we performed two types of adjustments. First, we applied a **north orientation** correction to align the reference direction of the sensor with the expected world reference in roboDK. Second, a **3-axis orientation** correction was performed to ensure the Roll, Pitch, and Yaw rotations from the IMU matched the axes of the 3D object. By doing this, the movements performed on the Endo-module matched the ones observed on the plane in roboDK.
 
 
 ### The corrections you have made in the code
