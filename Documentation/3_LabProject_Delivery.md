@@ -18,14 +18,9 @@ Once the hardware setup was completed, the first step was to configure the IP ad
  
 The first operating performance diagnostic provided an output that indicated a failure in the connection between the IMU sensor and the Endo-Module. No data was being transmitted, and the system was not responding as expected. We reviewed the uploaded program and made sure there were no errors in the code or in the IP address configuration. After realising all other groups were having the same connection failure, it became clear that the issue was not isolated to our setup. The source of the error was the router, _Robotics\_UB_. After rebooting the router, the Python script was run again and the connection was established correctly.
  
-Once the connection was stable, we were able to visualize the selected 3D object (initially the `plane`) moving in real time in response to the movement of the Endo-module. However, we noticed that the orientation of the virtual object did not match the actual physical orientation of the IMU sensor.
- 
-To solve this issue, we performed two types of adjustments:
- 
-- **North orientation correction:** We aligned the reference direction of the sensor with the expected world reference in RoboDK.
-- **3-axis orientation correction:** We ensured the Roll, Pitch, and Yaw rotations from the IMU matched the axes of the 3D object correctly.
- 
-By applying both corrections, the movements performed on the Endo-module matched those observed on the 3D object in RoboDK.
+Once the connection was stable, we were able to visualize the selected 3D object (initially the `plane`) moving in real time in response to the movement of the Endo-module. By applying corrections, the movements performed on the Endo-module matched those observed on the 3D object in RoboDK.
+
+Initially, we used a plane as the visualized object and later changed it to a surgical needle to better represent a medical application.
  
 ### Code changes made
  
@@ -46,10 +41,15 @@ To adapt the program to our group setup and ensure correct communication and vis
  
 ### Is the `plane` 3D object in RoboDK moving properly?
  
-Yes, after rebooting the router and re-establishing the connection, the `plane` object moved correctly in RoboDK in real time. We verified this by physically moving the Endo-module and observing that the virtual `plane` responded accordingly. However, the movement was only considered correct after applying the orientation corrections described above, prior to those adjustments, the plane was responding to movement but along the wrong axes.
+Initially, the plane was moving in real time in response to the IMU sensor data. However, the movement was not properly aligned with the real orientation of the sensor.
+
+This means that although the object was moving, it was not moving correctly, since the axes of the virtual object did not match those of the IMU. After applying orientation corrections, the movement became accurate and consistent with the physical motion.
  
 ### What did we do to properly verify the orientation angles Roll, Pitch, and Yaw?
 
+We realised that the orientation of the virtual object did not match the actual physical orientation of the IMU sensor. To solve this issue, we performed two types of adjustments: 
+* First, we applied a **north orientation** correction to align the reference direction of the sensor with the expected world reference in roboDK.
+* Second, a **3-axis orientation correction** was performed to ensure the Roll, Pitch, and Yaw rotations from the IMU matched the axes of the 3D object. By doing this, the movements performed on the Endo-module matched the ones observed on the plane in roboDK.
  
 ### What did we have to change in the Python code to switch the 3D object to `surgical_needle`?
  
@@ -61,8 +61,8 @@ In the file `Receive_data_RPY_IMU_world.py`, we located the line where the 3D ob
  
 The first conclusion we derived was the importance of not trusting raw simulation output without verification. As described above, we had to adjust the axis mapping in the 3D visualization to match the IMU sensor's physical axes. If we had not done this, we would have been visualizing movements that did not correspond to what was actually happening on the Endo-module. This reinforced a key engineering principle: **always validate that simulation results reflect reality before drawing any conclusions**.
  
-Regarding the applicability of these tools in our **avant-projecte** — a *Postural Correction Chair* — we concluded that an IMU sensor could be highly useful for tracking the inclination or movement of the user's spine in real time. By defining threshold values for Roll, Pitch, and Yaw, the system could emit an alert whenever the user's posture deviates beyond acceptable limits. The lab experience gave us a practical understanding of how to configure and calibrate such a sensor, which is directly transferable to our project.
+Regarding the applicability of these tools in our **avant-projecte**, a *Postural Correction Chair*, we concluded that an IMU sensor could be highly useful for tracking the inclination or movement of the user's spine in real time. By defining threshold values for Roll, Pitch, and Yaw, the system could emit an alert whenever the user's posture deviates beyond acceptable limits. The lab experience gave us a practical understanding of how to configure and calibrate such a sensor, which is directly transferable to our project.
  
-More broadly, the skills acquired in this session — wireless sensor communication, real-time 3D visualization, and axis calibration — are relevant to a wide range of engineering applications, from medical robotics to wearable monitoring systems and human–machine interfaces.
+More broadly, we adquired skills in this session, such as wireless sensor communication, real-time 3D visualization, and axis calibration, that are relevant to a wide range of engineering applications, from robotics applied to medicine to wearable monitoring systems.
  
 ![Image 2026-03-19 at 12 45 30](https://github.com/user-attachments/assets/c953e124-dbc5-4198-bee5-bca850a71d1c)
