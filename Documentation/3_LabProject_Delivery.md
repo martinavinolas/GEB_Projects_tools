@@ -1,6 +1,6 @@
 ![University of Barcelona Logo](././Images/3D_Orientation/UB.png)
  
-## SEMINARI D'EINES D'ENGINYERIA BIOMÉDICA: 3_LabProject_Delivery — GRUP 1
+## GRUP 1: SEMINARI D'EINES D'ENGINYERIA BIOMÉDICA
  
 ---
  
@@ -46,16 +46,10 @@ To adapt the program to our group setup and ensure correct communication and vis
  
 ### Is the `plane` 3D object in RoboDK moving properly?
  
-Yes, after rebooting the router and re-establishing the connection, the `plane` object moved correctly in RoboDK in real time. We verified this by physically moving the Endo-module and observing that the virtual `plane` responded accordingly. However, the movement was only considered correct after applying the orientation corrections described above — prior to those adjustments, the plane was responding to movement but along the wrong axes.
+Yes, after rebooting the router and re-establishing the connection, the `plane` object moved correctly in RoboDK in real time. We verified this by physically moving the Endo-module and observing that the virtual `plane` responded accordingly. However, the movement was only considered correct after applying the orientation corrections described above, prior to those adjustments, the plane was responding to movement but along the wrong axes.
  
 ### What did we do to properly verify the orientation angles Roll, Pitch, and Yaw?
- 
-To verify the correctness of the RPY angles, we performed controlled physical movements on the Endo-module, one axis at a time:
- 
-- We rotated the Endo-module along its expected **Roll** axis and confirmed that only the Roll value changed in the output, with no interference from Pitch or Yaw.
-- We repeated the same process for **Pitch** and **Yaw** independently.
- 
-This method allowed us to confirm that each rotation axis of the IMU sensor was correctly mapped to the corresponding axis in RoboDK. When we detected a mismatch, we applied the north orientation and 3-axis corrections in the Python script until the observed movements matched the expected ones.
+
  
 ### What did we have to change in the Python code to switch the 3D object to `surgical_needle`?
  
