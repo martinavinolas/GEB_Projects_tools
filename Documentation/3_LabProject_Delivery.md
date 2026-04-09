@@ -1,0 +1,74 @@
+![University of Barcelona Logo](././Images/3D_Orientation/UB.png)
+ 
+## SEMINARI D'EINES D'ENGINYERIA BIOMÉDICA: 3_LabProject_Delivery — GRUP 1
+ 
+---
+ 
+## INDEX
+ 
+1. What we have done
+2. Proceeding with the suggested questions
+3. Final conclusions
+ 
+---
+ 
+## 1. What we have done
+ 
+Once the hardware setup was completed, the first step was to configure the IP address of the Endo-module to the one corresponding to our group, G1.
+ 
+The first operating performance diagnostic provided an output that indicated a failure in the connection between the IMU sensor and the Endo-Module. No data was being transmitted, and the system was not responding as expected. We reviewed the uploaded program and made sure there were no errors in the code or in the IP address configuration. After realising all other groups were having the same connection failure, it became clear that the issue was not isolated to our setup. The source of the error was the router, _Robotics\_UB_. After rebooting the router, the Python script was run again and the connection was established correctly.
+ 
+Once the connection was stable, we were able to visualize the selected 3D object (initially the `plane`) moving in real time in response to the movement of the Endo-module. However, we noticed that the orientation of the virtual object did not match the actual physical orientation of the IMU sensor.
+ 
+To solve this issue, we performed two types of adjustments:
+ 
+- **North orientation correction:** We aligned the reference direction of the sensor with the expected world reference in RoboDK.
+- **3-axis orientation correction:** We ensured the Roll, Pitch, and Yaw rotations from the IMU matched the axes of the 3D object correctly.
+ 
+By applying both corrections, the movements performed on the Endo-module matched those observed on the 3D object in RoboDK.
+ 
+### Code changes made
+ 
+To adapt the program to our group setup and ensure correct communication and visualization, we made the following changes:
+ 
+- **Device ID update (`main.cpp`):** Changed the device identifier from `"G5_Endo"` to `"G1_Endo"` to match our group.
+- **Receiver IP update (`main.cpp`):** Changed the receiver computer IP address from `192.168.1.55` to `192.168.1.15` so the IMU data was sent to the correct computer.
+- **Target device update (`Receive_data_RPY_IMU_world.py`):** Changed the target device from `"G5_Endo"` to `"G1_Endo"` so the script received data from our Endo-module.
+- **3D object update (`Receive_data_RPY_IMU_world.py`):** Changed the visualized object in RoboDK from `"plane"` to `"surgical_needle"` to visualize and orient the needle correctly.
+ 
+<img width="997" height="581" alt="image" src="https://github.com/user-attachments/assets/ffa38885-1d2c-4686-a600-324bc4e1d4d8" />
+ 
+<img width="1088" height="461" alt="image" src="https://github.com/user-attachments/assets/d5c87a92-f73d-4bc4-8b77-b40515d998fc" />
+ 
+---
+ 
+## 2. Proceeding with the suggested questions
+ 
+### Is the `plane` 3D object in RoboDK moving properly?
+ 
+Yes, after rebooting the router and re-establishing the connection, the `plane` object moved correctly in RoboDK in real time. We verified this by physically moving the Endo-module and observing that the virtual `plane` responded accordingly. However, the movement was only considered correct after applying the orientation corrections described above — prior to those adjustments, the plane was responding to movement but along the wrong axes.
+ 
+### What did we do to properly verify the orientation angles Roll, Pitch, and Yaw?
+ 
+To verify the correctness of the RPY angles, we performed controlled physical movements on the Endo-module, one axis at a time:
+ 
+- We rotated the Endo-module along its expected **Roll** axis and confirmed that only the Roll value changed in the output, with no interference from Pitch or Yaw.
+- We repeated the same process for **Pitch** and **Yaw** independently.
+ 
+This method allowed us to confirm that each rotation axis of the IMU sensor was correctly mapped to the corresponding axis in RoboDK. When we detected a mismatch, we applied the north orientation and 3-axis corrections in the Python script until the observed movements matched the expected ones.
+ 
+### What did we have to change in the Python code to switch the 3D object to `surgical_needle`?
+ 
+In the file `Receive_data_RPY_IMU_world.py`, we located the line where the 3D object name was defined and changed it from `"plane"` to `"surgical_needle"`. This single change was sufficient for RoboDK to load and animate the surgical needle instead of the plane, while keeping all the orientation logic and IMU data reception intact.
+ 
+---
+ 
+## 3. Final conclusions
+ 
+The first conclusion we derived was the importance of not trusting raw simulation output without verification. As described above, we had to adjust the axis mapping in the 3D visualization to match the IMU sensor's physical axes. If we had not done this, we would have been visualizing movements that did not correspond to what was actually happening on the Endo-module. This reinforced a key engineering principle: **always validate that simulation results reflect reality before drawing any conclusions**.
+ 
+Regarding the applicability of these tools in our **avant-projecte** — a *Postural Correction Chair* — we concluded that an IMU sensor could be highly useful for tracking the inclination or movement of the user's spine in real time. By defining threshold values for Roll, Pitch, and Yaw, the system could emit an alert whenever the user's posture deviates beyond acceptable limits. The lab experience gave us a practical understanding of how to configure and calibrate such a sensor, which is directly transferable to our project.
+ 
+More broadly, the skills acquired in this session — wireless sensor communication, real-time 3D visualization, and axis calibration — are relevant to a wide range of engineering applications, from medical robotics to wearable monitoring systems and human–machine interfaces.
+ 
+![Image 2026-03-19 at 12 45 30](https://github.com/user-attachments/assets/c953e124-dbc5-4198-bee5-bca850a71d1c)
