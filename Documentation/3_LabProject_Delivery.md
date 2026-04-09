@@ -1,7 +1,6 @@
 ![University of Barcelona Logo](././Images/3D_Orientation/UB.png)
  
 ## GRUP 1: SEMINARI D'EINES D'ENGINYERIA BIOMÉDICA
- 
 ---
  
 ## INDEX
@@ -68,3 +67,9 @@ Regarding the TFG, some of us are interested in the biomechanics field of the Bi
 More broadly, we adquired skills in this session, such as wireless sensor communication, real-time 3D visualization, and axis calibration, that are relevant to a wide range of engineering applications, from robotics applied to medicine to wearable monitoring systems.
  
 ![Image 2026-03-19 at 12 45 30](https://github.com/user-attachments/assets/c953e124-dbc5-4198-bee5-bca850a71d1c)
+
+---
+Members:
+- Núria Cerón
+- Carlota Garrido
+- Martina Viñolas
